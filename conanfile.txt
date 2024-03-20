@@ -1,0 +1,12 @@
+[requires]
+cereal/1.3.2
+uwebsockets/20.62.0
+catch2/3.5.3
+glaze/2.2.1
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout
