@@ -37,14 +37,14 @@ void RunServer() {
         res->end();
     });
 
-    app.get("/list/mapTheatres", [&](auto *res, auto *req) {
+    app.get("/list/theatres", [&](auto *res, auto *req) {
         res->writeStatus("200 OK");
         res->writeHeader("Content-Type", "application/json; charset=utf-8");
         res->write(glz::write_json(bookingEngine->get_theatres()));
         res->end();
     });
 
-    app.get("/list/mapTheatres/:movie_id", [&](auto *res, auto *req) {
+    app.get("/list/theatres/:movie_id", [&](auto *res, auto *req) {
         res->writeStatus("200 OK");
         res->writeHeader("Content-Type", "application/json; charset=utf-8");
         res->write(glz::write_json(bookingEngine->get_theatres(stoi(string(req->getParameter("movie_id"))))));

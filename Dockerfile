@@ -22,8 +22,11 @@ RUN cd build/; \
 
 
 
-FROM ubuntu
+FROM ubuntu:24.04
 WORKDIR /app
+RUN apt update -y; \
+    apt install -y libstdc++6
+
 COPY --from=build-env /app/build/movie_book ./movie_book
 COPY --from=build-env /app/build/movies.json ./movies.json
 COPY --from=build-env /app/build/theatres.json ./theatres.json
