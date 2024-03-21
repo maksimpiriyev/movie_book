@@ -25,7 +25,7 @@ void RunServer() {
     vector<shared_ptr<Movie>> movies;
     glz::read_file_json(movies, "movies.json", std::string{});
     vector<shared_ptr<Theatre>> theatres;
-    glz::read_file_json(theatres, "mapTheatres.json", std::string{});
+    glz::read_file_json(theatres, "theatres.json", std::string{});
 
     auto bookingEngine = new BookingEngine(movies, theatres);
 
@@ -73,7 +73,8 @@ void RunServer() {
                 auto book_request_result = glz::read_json<BookRequest>(*bodyBuffer);
                 if (book_request_result) {
                     auto book_request = book_request_result.value();
-                    auto result = bookingEngine->book(0, book_request.theatre_id, book_request.movie_id,
+                    auto client = bookingEngine->new_client();
+                    auto result = bookingEngine->book(client->id, book_request.theatre_id, book_request.movie_id,
                                                       book_request.seats);
                     if (result) {
                         res->end(glz::write_json(*result));
