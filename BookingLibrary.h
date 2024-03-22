@@ -13,19 +13,11 @@
 using namespace std;
 #define MAX_SEAT_COUNT 20
 
-/**
-*   Current time as unix timespec
-*/
 static struct timespec now(){
     struct timespec spec = {0};
     clock_gettime(CLOCK_REALTIME, &spec);
     return spec;
 }
-
-/**
-* @brief Movie class, has id and name
-* @author Maksim Piriyev
-*/
 
 class Movie {
 public:
@@ -60,10 +52,6 @@ public:
 
 };
 
-/**
-* @brief Booking class, stores the booking information of a client, theatre, movie, hall, seats and timestamp of booking.
-* @author Maksim Piriyev
-*/
 class Booking {
 public:
     int client_id;
@@ -94,10 +82,6 @@ public:
     };
 };
 
-/**
-* @brief enum class for seat status, Free, Reserved, Booked
-* @author Maksim Piriyev
-*/
 enum SeatStatus {
     Free = 0, Reserved, Booked
 };
@@ -110,11 +94,6 @@ struct glz::meta<SeatStatus> {
                                             Booked
     );
 };
-
-/**
-* @brief Hall class, has id, name, movie_id and seats. It has reserve and book methods to reserve and book seats. It has totalEmptySeats method to get the total empty seats in the hall. It has a semaphore to lock the hall while reserving or booking seats.
-* @author Maksim Piriyev
-*/
 
 class Hall {
     binary_semaphore semaphore = binary_semaphore(1);
@@ -133,43 +112,6 @@ public:
         );
     };
 
-    /**
-    * totalEmptySeats method returns the total empty seats in the hall
-    * @author Maksim Piriyev
-    */
-    int totalEmptySeats() {
-        int emptySeatCount = 0;
-        semaphore.acquire();
-        for (int i = 0; i < sizeof(this->seats) / sizeof(SeatStatus); ++i) {
-            if (this->seats[i] == SeatStatus::Free) {
-                emptySeatCount++;
-            }
-        }
-        semaphore.release();
-        return emptySeatCount;
-    }
-
-    /**
-    * empty_seats method returns the lsit of empty seats in the hall
-    * @author Maksim Piriyev
-    */
-    vector<int> empty_seats() {
-        vector<int> seats;
-        semaphore.acquire();
-        for (int i = 0; i < sizeof(this->seats) / sizeof(SeatStatus); ++i) {
-            if (this->seats[i] == SeatStatus::Free) {
-                seats.push_back(i);
-            }
-        }
-        semaphore.release();
-        return seats;
-    }
-
-    /**
-    * reserve method reserves the seats in the hall with the given seat numbers. It returns true if the seats are reserved successfully, otherwise false. It uses a semaphore to lock the hall while reserving the seats. It checks if the seats are free before reserving them. If any of the seats are not free, it releases the semaphore and returns false. Otherwise, it reserves the seats and releases the semaphore. It returns true if all the seats are reserved successfully, otherwise false.
-    * @param seats vector of seat numbers to reserve in the hall
-    * @author Maksim Piriyev
-    */
     int totalEmptySeats() {
         int emptySeatCount = 0;
         for (int i = 0; i < sizeof(seats) / sizeof(SeatStatus); ++i) {
@@ -195,11 +137,6 @@ public:
         return true;
     }
 
-    /**
-    * book method books the seats in the hall with the given seat numbers. It returns true if the seats are booked successfully, otherwise false. It uses a semaphore to lock the hall while booking the seats. It checks if the seats are reserved before booking them. If any of the seats are not reserved, it releases the semaphore and returns false. Otherwise, it books the seats and releases the semaphore. It returns true if all the seats are booked successfully, otherwise false.
-    * @param seats vector of seat numbers to book in the hall
-    * @author Maksim Piriyev
-    */
     bool book(vector<int> seats) {
         if (reserve(seats)) {
             for (auto seat: seats) {
@@ -217,10 +154,6 @@ struct BookResult {
     bool is_booked;
 };
 
-/**
-* @brief Theatre class, has id, name and halls.
-* @author Maksim Piriyev
-*/
 class Theatre {
 public:
     vector<shared_ptr<Hall>> halls;
@@ -236,10 +169,6 @@ public:
         );
     };
 
-    /**
-    * hall() method returns the hall with the given movie_id
-    * @author Maksim Piriyev
-    */
     shared_ptr<Hall> hall(int movie_id) {
         for (int i = 0; i < halls.size(); ++i) {
             if (halls[i]->movie_id == movie_id)
@@ -248,28 +177,12 @@ public:
         return nullptr;
     }
 
-    /**
-    * has_movie() method checks if the theatre has a movie with the given movie_id
-    * @author Maksim Piriyev
-    */
     bool has_movie(int movie_id) {
         return hall(movie_id) != nullptr;
     }
 
-    /**
-    * book() method books the seats in the hall with the given movie_id and
-    * returns the hall_id and is_booked status in BookResult struct.
-    * If the hall is not  found, it returns -1 as hall_id and false as is_booked status.
-    * If the seats  are not available, it returns the hall_id and false as is_booked status.
-    * If the seats are available, it reserves the seats and books them and returns the hall_id
-    * and true as is_booked status in BookResult struct.
-    * @author Maksim Piriyev
-    */
     BookResult book(int movie_id, vector<int> seats) {
         auto hall = this->hall(movie_id);
-        if(!hall)
-            return {-1, false};
-      
         auto result = hall->book(seats);
         return {hall->id, result};
     }

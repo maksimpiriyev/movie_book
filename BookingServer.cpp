@@ -21,12 +21,11 @@ struct BookRequest {
     vector<int> seats;
 };
 
-void RunServer(int port) {
-
+void RunServer() {
     vector<shared_ptr<Movie>> movies;
     glz::read_file_json(movies, "movies.json", std::string{});
     vector<shared_ptr<Theatre>> theatres;
-    glz::read_file_json(theatres, "theatres.json", std::string{});
+    glz::read_file_json(theatres, "mapTheatres.json", std::string{});
 
     auto bookingEngine = new BookingEngine(movies, theatres);
 
@@ -52,16 +51,6 @@ void RunServer(int port) {
         res->end();
     });
 
-    app.get("/list/theatre-seats/:theatre_id/:movie_id", [&](auto *res, auto *req) {
-        res->writeStatus("200 OK");
-        res->writeHeader("Content-Type", "application/json; charset=utf-8");
-        int theatre_id = stoi(string(req->getParameter("theatre_id")));
-        int movie_id = stoi(string(req->getParameter("movie_id")));
-        auto theatre_seats = bookingEngine->get_seats(movie_id, theatre_id);
-        res->write(glz::write_json(theatre_seats));
-        res->end();
-    });
-
     app.get("/list/bookings/:client_id", [&](auto *res, auto *req) {
         res->writeStatus("200 OK");
         res->writeHeader("Content-Type", "application/json; charset=utf-8");
@@ -84,8 +73,7 @@ void RunServer(int port) {
                 auto book_request_result = glz::read_json<BookRequest>(*bodyBuffer);
                 if (book_request_result) {
                     auto book_request = book_request_result.value();
-                    auto client = bookingEngine->new_client();
-                    auto result = bookingEngine->book(client->id, book_request.theatre_id, book_request.movie_id,
+                    auto result = bookingEngine->book(0, book_request.theatre_id, book_request.movie_id,
                                                       book_request.seats);
                     if (result) {
                         res->end(glz::write_json(*result));
@@ -103,9 +91,9 @@ void RunServer(int port) {
         res->onAborted([]() {});
     });
 
-    app.listen(port, [port](auto *listenSocket) {
+    app.listen(9001, [](auto *listenSocket) {
         if (listenSocket) {
-            std::cout << "Listening on port " << port << std::endl;
+            std::cout << "Listening on port " << 9001 << std::endl;
         } else {
             std::cout << "Failed to load or to bind to port" << std::endl;
         }

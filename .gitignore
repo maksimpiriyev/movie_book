@@ -34,4 +34,3 @@
 build/
 cmake-build*/
 cmake-debug*/
-.idea/*
