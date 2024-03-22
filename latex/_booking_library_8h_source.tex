@@ -119,8 +119,8 @@
 \DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hall_a03426081562a6c96a7ec8455d5b619a1}{totalEmptySeats}}()\ \{}
 \DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ emptySeatCount\ =\ 0;}
 \DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ semaphore.acquire();}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ /\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}});\ ++i)\ \{}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}}[i]\ ==\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{SeatStatus::Free}})\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \textcolor{keyword}{sizeof}(this-\/>\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ /\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}});\ ++i)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>seats[i]\ ==\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{SeatStatus::Free}})\ \{}
 \DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ emptySeatCount++;}
 \DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \}}
@@ -131,8 +131,8 @@
 \DoxyCodeLine{00154\ \ \ \ \ vector<int>\ \mbox{\hyperlink{class_hall_a10f8d85eded042ed53bcb0f920c31276}{empty\_seats}}()\ \{}
 \DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ vector<int>\ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}};}
 \DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ semaphore.acquire();}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ /\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}});\ ++i)\ \{}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}}[i]\ ==\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{SeatStatus::Free}})\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \textcolor{keyword}{sizeof}(this-\/>\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ /\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}});\ ++i)\ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>seats[i]\ ==\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{SeatStatus::Free}})\ \{}
 \DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}}.push\_back(i);}
 \DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
