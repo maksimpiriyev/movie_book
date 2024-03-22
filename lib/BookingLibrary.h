@@ -170,16 +170,6 @@ public:
     * @param seats vector of seat numbers to reserve in the hall
     * @author Maksim Piriyev
     */
-    int totalEmptySeats() {
-        int emptySeatCount = 0;
-        for (int i = 0; i < sizeof(seats) / sizeof(SeatStatus); ++i) {
-            if (seats[i] == SeatStatus::Free) {
-                emptySeatCount++;
-            }
-        }
-        return emptySeatCount;
-    }
-
     bool reserve(vector<int> seats) {
         semaphore.acquire();
         for (auto seat: seats) {
