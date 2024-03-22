@@ -30,5 +30,5 @@ RUN apt update -y; \
 COPY --from=build-env /app/build/movie_book ./movie_book
 COPY --from=build-env /app/build/movies.json ./movies.json
 COPY --from=build-env /app/build/theatres.json ./theatres.json
-EXPOSE 9001
+EXPOSE 8080
 ENTRYPOINT ["./movie_book"]

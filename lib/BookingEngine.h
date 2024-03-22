@@ -13,6 +13,12 @@
 #include "BookingLibrary.h"
 using namespace std;
 
+struct TheatreSeats {
+    int movie_id;
+    int theatre_id;
+    vector<int> empty_seats;
+};
+
 class BookingEngine {
     vector<shared_ptr<Booking>> bookings;
 
@@ -22,6 +28,10 @@ class BookingEngine {
 public:
 
 
+    /**
+    * new_client method creates a new client with a random name and returns it
+    * @author Maksim Piriyev
+    */
     shared_ptr<Client> new_client(){
         auto id = mapClients.size()+1;
         stringstream stream;
@@ -29,6 +39,11 @@ public:
         mapClients[id] = make_shared<Client>(id, stream.str());
         return mapClients[id];
     }
+
+    /**
+    * get_movies method returns all movies in the system
+    * @author Maksim Piriyev
+    */
     const vector<shared_ptr<Movie>> get_movies(){
         vector<shared_ptr<Movie>> list;
         for (auto [_, movie] : mapMovies) {
@@ -36,6 +51,11 @@ public:
         }
         return list;
     }
+  
+    /**
+    * get_theatres method returns all theatres in the system
+    * @author Maksim Piriyev
+    */
     const vector<shared_ptr<Theatre>> get_theatres(){
         vector<shared_ptr<Theatre>> list;
         for (auto [_, theatre] : mapTheatres) {
@@ -43,6 +63,19 @@ public:
         }
         return list;
     }
+    /**
+    * get_theatre method returns theatre with theatre_id
+    * @author Maksim Piriyev
+    */
+    const shared_ptr<Theatre> get_theatre(int theatre_id){
+        return mapTheatres[theatre_id];
+    }
+
+    /**
+    * get_theatres(movie_id) method returns all theatres in the system that has the movie with the given id
+    * @params movie_id
+    * @author Maksim Piriyev
+    */
     const vector<shared_ptr<Theatre>> get_theatres(int movie_id){
         vector<shared_ptr<Theatre>> list;
         for (auto [ _, theatre] : mapTheatres) {
@@ -52,10 +85,33 @@ public:
         return list;
     }
 
+    /**
+    * get_seats method returns list of empty seats in theatre:theatre_id for the movie:movie_id
+    * @params movie_id
+    * @author Maksim Piriyev
+    */
+    const TheatreSeats get_seats(int movie_id, int theatre_id){
+            auto hall = mapTheatres[theatre_id]->hall(movie_id);
+            if(hall) {
+                return { movie_id, theatre_id, hall->empty_seats()};
+            }
+        return { movie_id, theatre_id, {}};
+    }
+
+    /**
+    * get_bookings method returns all bookings in the system
+    * @author Maksim Piriyev
+    */
+
     const vector<shared_ptr<Booking>> get_bookings(){
         return vector<shared_ptr<Booking>>(bookings);
     }
 
+    /**
+    * get_bookings(client_id) method returns all bookings of the client in the system
+    * @params client_id
+    * @author Maksim Piriyev
+    */
     const vector<shared_ptr<Booking>> get_bookings(int client_id){
         vector<shared_ptr<Booking>> list;
         for (auto booking : bookings) {
@@ -65,6 +121,11 @@ public:
         return list;
     }
 
+    /**
+    * BookingEngine(movies, theatres) constructor initializes the system with the given movies and theatres
+    * @params movies, theatres
+    * @author Maksim Piriyev
+    */
     BookingEngine(vector<shared_ptr<Movie>> movies, vector<shared_ptr<Theatre>> theatres){
         for (auto item : movies) {
             this->mapMovies[item->id] = item;
@@ -74,6 +135,13 @@ public:
         }
     }
 
+    /**
+    * book method books the seats for the client in the theatre for the movie and returns the booking
+    * object, if the booking is successful, otherwise returns null.
+    * It also adds the booking to the bookings list of the system.
+    * @params client_id, theatre_id, movie_id, seat_ids
+    * @author Maksim Piriyev
+    */
     shared_ptr<Booking> book(int client_id, int theatre_id, int movie_id, vector<int> seat_ids){
         auto theatre = mapTheatres[theatre_id];
         auto book_result = theatre->book(movie_id, seat_ids);

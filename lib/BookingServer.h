@@ -5,4 +5,8 @@
 #pragma once
 #include "BookingEngine.h"
 
-void RunServer();
+/**
+* @brief Runs an http server at the specified port.Default port is 9001.
+* @author Maksim Piriyev
+*/
+void RunServer(int port = 8080);

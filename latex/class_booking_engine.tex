@@ -1,0 +1,130 @@
+\doxysection{Booking\+Engine Class Reference}
+\hypertarget{class_booking_engine}{}\label{class_booking_engine}\index{BookingEngine@{BookingEngine}}
+
+
+{\ttfamily \#include $<$Booking\+Engine.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_client}{Client}} $>$ \mbox{\hyperlink{class_booking_engine_a95614d35033782dacb7cddedd220c5fa}{new\+\_\+client}} ()
+\item 
+const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_movie}{Movie}} $>$ $>$ \mbox{\hyperlink{class_booking_engine_ab825826977f8daf67a6f78795d134418}{get\+\_\+movies}} ()
+\item 
+const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_theatre}{Theatre}} $>$ $>$ \mbox{\hyperlink{class_booking_engine_ab8f6ddcca5c8a0edd133978cc246d32a}{get\+\_\+theatres}} ()
+\item 
+const shared\+\_\+ptr$<$ \mbox{\hyperlink{class_theatre}{Theatre}} $>$ \mbox{\hyperlink{class_booking_engine_aa4c82e29d13d7663ee31303cdd24f17d}{get\+\_\+theatre}} (int theatre\+\_\+id)
+\item 
+const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_theatre}{Theatre}} $>$ $>$ \mbox{\hyperlink{class_booking_engine_a374ff39aee888004902006622375fe19}{get\+\_\+theatres}} (int movie\+\_\+id)
+\item 
+const \mbox{\hyperlink{struct_theatre_seats}{Theatre\+Seats}} \mbox{\hyperlink{class_booking_engine_a7df9a835d6364a39ddc1858d706d937c}{get\+\_\+seats}} (int movie\+\_\+id, int theatre\+\_\+id)
+\item 
+const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_booking}{Booking}} $>$ $>$ \mbox{\hyperlink{class_booking_engine_ace7b47b033f3f04c5aa04c740ca3d1fd}{get\+\_\+bookings}} ()
+\item 
+const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_booking}{Booking}} $>$ $>$ \mbox{\hyperlink{class_booking_engine_a33730d1c5f54d4fc257f43e73bc8aed7}{get\+\_\+bookings}} (int client\+\_\+id)
+\item 
+\mbox{\hyperlink{class_booking_engine_ab6f4f2967ae08f34344fbc6c040168ad}{Booking\+Engine}} (vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_movie}{Movie}} $>$ $>$ movies, vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_theatre}{Theatre}} $>$ $>$ theatres)
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_booking}{Booking}} $>$ \mbox{\hyperlink{class_booking_engine_a5fc222c36bc32fae20713f3c6ac7c75f}{book}} (int client\+\_\+id, int theatre\+\_\+id, int movie\+\_\+id, vector$<$ int $>$ seat\+\_\+ids)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_booking_engine_ab6f4f2967ae08f34344fbc6c040168ad}\label{class_booking_engine_ab6f4f2967ae08f34344fbc6c040168ad} 
+\index{BookingEngine@{BookingEngine}!BookingEngine@{BookingEngine}}
+\index{BookingEngine@{BookingEngine}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{BookingEngine()}{BookingEngine()}}
+{\footnotesize\ttfamily Booking\+Engine\+::\+Booking\+Engine (\begin{DoxyParamCaption}\item[{vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_movie}{Movie}} $>$ $>$}]{movies,  }\item[{vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_theatre}{Theatre}} $>$ $>$}]{theatres }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\doxylink{class_booking_engine}{Booking\+Engine(movies, theatres)} constructor initializes the system with the given movies and theatres @params movies, theatres \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_booking_engine_a5fc222c36bc32fae20713f3c6ac7c75f}\label{class_booking_engine_a5fc222c36bc32fae20713f3c6ac7c75f} 
+\index{BookingEngine@{BookingEngine}!book@{book}}
+\index{book@{book}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{book()}{book()}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$ \mbox{\hyperlink{class_booking}{Booking}} $>$ Booking\+Engine\+::book (\begin{DoxyParamCaption}\item[{int}]{client\+\_\+id,  }\item[{int}]{theatre\+\_\+id,  }\item[{int}]{movie\+\_\+id,  }\item[{vector$<$ int $>$}]{seat\+\_\+ids }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+book method books the seats for the client in the theatre for the movie and returns the booking object, if the booking is successful, otherwise returns null. It also adds the booking to the bookings list of the system. @params client\+\_\+id, theatre\+\_\+id, movie\+\_\+id, seat\+\_\+ids \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_booking_engine_ace7b47b033f3f04c5aa04c740ca3d1fd}\label{class_booking_engine_ace7b47b033f3f04c5aa04c740ca3d1fd} 
+\index{BookingEngine@{BookingEngine}!get\_bookings@{get\_bookings}}
+\index{get\_bookings@{get\_bookings}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{get\_bookings()}{get\_bookings()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_booking}{Booking}} $>$ $>$ Booking\+Engine\+::get\+\_\+bookings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+get\+\_\+bookings method returns all bookings in the system \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_booking_engine_a33730d1c5f54d4fc257f43e73bc8aed7}\label{class_booking_engine_a33730d1c5f54d4fc257f43e73bc8aed7} 
+\index{BookingEngine@{BookingEngine}!get\_bookings@{get\_bookings}}
+\index{get\_bookings@{get\_bookings}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{get\_bookings()}{get\_bookings()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_booking}{Booking}} $>$ $>$ Booking\+Engine\+::get\+\_\+bookings (\begin{DoxyParamCaption}\item[{int}]{client\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+get\+\_\+bookings(client\+\_\+id) method returns all bookings of the client in the system @params client\+\_\+id \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_booking_engine_ab825826977f8daf67a6f78795d134418}\label{class_booking_engine_ab825826977f8daf67a6f78795d134418} 
+\index{BookingEngine@{BookingEngine}!get\_movies@{get\_movies}}
+\index{get\_movies@{get\_movies}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{get\_movies()}{get\_movies()}}
+{\footnotesize\ttfamily const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_movie}{Movie}} $>$ $>$ Booking\+Engine\+::get\+\_\+movies (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+get\+\_\+movies method returns all movies in the system \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_booking_engine_a7df9a835d6364a39ddc1858d706d937c}\label{class_booking_engine_a7df9a835d6364a39ddc1858d706d937c} 
+\index{BookingEngine@{BookingEngine}!get\_seats@{get\_seats}}
+\index{get\_seats@{get\_seats}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{get\_seats()}{get\_seats()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_theatre_seats}{Theatre\+Seats}} Booking\+Engine\+::get\+\_\+seats (\begin{DoxyParamCaption}\item[{int}]{movie\+\_\+id,  }\item[{int}]{theatre\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+get\+\_\+seats method returns list of empty seats in theatre\+:theatre\+\_\+id for the movie\+:movie\+\_\+id @params movie\+\_\+id \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_booking_engine_aa4c82e29d13d7663ee31303cdd24f17d}\label{class_booking_engine_aa4c82e29d13d7663ee31303cdd24f17d} 
+\index{BookingEngine@{BookingEngine}!get\_theatre@{get\_theatre}}
+\index{get\_theatre@{get\_theatre}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{get\_theatre()}{get\_theatre()}}
+{\footnotesize\ttfamily const shared\+\_\+ptr$<$ \mbox{\hyperlink{class_theatre}{Theatre}} $>$ Booking\+Engine\+::get\+\_\+theatre (\begin{DoxyParamCaption}\item[{int}]{theatre\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+get\+\_\+theatre method returns theatre with theatre\+\_\+id \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_booking_engine_ab8f6ddcca5c8a0edd133978cc246d32a}\label{class_booking_engine_ab8f6ddcca5c8a0edd133978cc246d32a} 
+\index{BookingEngine@{BookingEngine}!get\_theatres@{get\_theatres}}
+\index{get\_theatres@{get\_theatres}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{get\_theatres()}{get\_theatres()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_theatre}{Theatre}} $>$ $>$ Booking\+Engine\+::get\+\_\+theatres (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+get\+\_\+theatres method returns all theatres in the system \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_booking_engine_a374ff39aee888004902006622375fe19}\label{class_booking_engine_a374ff39aee888004902006622375fe19} 
+\index{BookingEngine@{BookingEngine}!get\_theatres@{get\_theatres}}
+\index{get\_theatres@{get\_theatres}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{get\_theatres()}{get\_theatres()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_theatre}{Theatre}} $>$ $>$ Booking\+Engine\+::get\+\_\+theatres (\begin{DoxyParamCaption}\item[{int}]{movie\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+get\+\_\+theatres(movie\+\_\+id) method returns all theatres in the system that has the movie with the given id @params movie\+\_\+id \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_booking_engine_a95614d35033782dacb7cddedd220c5fa}\label{class_booking_engine_a95614d35033782dacb7cddedd220c5fa} 
+\index{BookingEngine@{BookingEngine}!new\_client@{new\_client}}
+\index{new\_client@{new\_client}!BookingEngine@{BookingEngine}}
+\doxysubsubsection{\texorpdfstring{new\_client()}{new\_client()}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$ \mbox{\hyperlink{class_client}{Client}} $>$ Booking\+Engine\+::new\+\_\+client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+new\+\_\+client method creates a new client with a random name and returns it \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\mbox{\hyperlink{_booking_engine_8h}{Booking\+Engine.\+h}}\end{DoxyCompactItemize}

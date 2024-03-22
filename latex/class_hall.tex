@@ -1,0 +1,127 @@
+\doxysection{Hall Class Reference}
+\hypertarget{class_hall}{}\label{class_hall}\index{Hall@{Hall}}
+
+
+\doxylink{class_hall}{Hall} class, has id, name, movie\+\_\+id and seats. It has reserve and book methods to reserve and book seats. It has total\+Empty\+Seats method to get the total empty seats in the hall. It has a semaphore to lock the hall while reserving or booking seats.  
+
+
+
+
+{\ttfamily \#include $<$Booking\+Library.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_hall_1_1glaze}{glaze}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_hall_a03426081562a6c96a7ec8455d5b619a1}{total\+Empty\+Seats}} ()
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{class_hall_a10f8d85eded042ed53bcb0f920c31276}{empty\+\_\+seats}} ()
+\item 
+bool \mbox{\hyperlink{class_hall_a119373fa3e6dd5ec978a93fdceab2b15}{reserve}} (vector$<$ int $>$ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})
+\item 
+bool \mbox{\hyperlink{class_hall_a4447e466a511614c577515fc8efebefe}{book}} (vector$<$ int $>$ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_hall_a5d7df5a390f4dadc26c2dcdf4aa58f37}{id}} = 0
+\item 
+string \mbox{\hyperlink{class_hall_ab5b2c96b43c8b0bef708d00bafef778c}{name}} = "{}"{}
+\item 
+int \mbox{\hyperlink{class_hall_a63221501c08071136b483408f32a65e3}{movie\+\_\+id}} = 0
+\item 
+\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{Seat\+Status}} \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}} \mbox{[}\mbox{\hyperlink{_booking_library_8h_a42e07b056afb1e63dfebe25d510789e8}{MAX\+\_\+\+SEAT\+\_\+\+COUNT}}\mbox{]} = \{\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{Seat\+Status\+::\+Free}}\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_hall}{Hall} class, has id, name, movie\+\_\+id and seats. It has reserve and book methods to reserve and book seats. It has total\+Empty\+Seats method to get the total empty seats in the hall. It has a semaphore to lock the hall while reserving or booking seats. 
+
+\begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_hall_a4447e466a511614c577515fc8efebefe}\label{class_hall_a4447e466a511614c577515fc8efebefe} 
+\index{Hall@{Hall}!book@{book}}
+\index{book@{book}!Hall@{Hall}}
+\doxysubsubsection{\texorpdfstring{book()}{book()}}
+{\footnotesize\ttfamily bool Hall\+::book (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{seats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+book method books the seats in the hall with the given seat numbers. It returns true if the seats are booked successfully, otherwise false. It uses a semaphore to lock the hall while booking the seats. It checks if the seats are reserved before booking them. If any of the seats are not reserved, it releases the semaphore and returns false. Otherwise, it books the seats and releases the semaphore. It returns true if all the seats are booked successfully, otherwise false. 
+\begin{DoxyParams}{Parameters}
+{\em seats} & vector of seat numbers to book in the hall \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_hall_a10f8d85eded042ed53bcb0f920c31276}\label{class_hall_a10f8d85eded042ed53bcb0f920c31276} 
+\index{Hall@{Hall}!empty\_seats@{empty\_seats}}
+\index{empty\_seats@{empty\_seats}!Hall@{Hall}}
+\doxysubsubsection{\texorpdfstring{empty\_seats()}{empty\_seats()}}
+{\footnotesize\ttfamily vector$<$ int $>$ Hall\+::empty\+\_\+seats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+empty\+\_\+seats method returns the lsit of empty seats in the hall \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_hall_a119373fa3e6dd5ec978a93fdceab2b15}\label{class_hall_a119373fa3e6dd5ec978a93fdceab2b15} 
+\index{Hall@{Hall}!reserve@{reserve}}
+\index{reserve@{reserve}!Hall@{Hall}}
+\doxysubsubsection{\texorpdfstring{reserve()}{reserve()}}
+{\footnotesize\ttfamily bool Hall\+::reserve (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{seats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+reserve method reserves the seats in the hall with the given seat numbers. It returns true if the seats are reserved successfully, otherwise false. It uses a semaphore to lock the hall while reserving the seats. It checks if the seats are free before reserving them. If any of the seats are not free, it releases the semaphore and returns false. Otherwise, it reserves the seats and releases the semaphore. It returns true if all the seats are reserved successfully, otherwise false. 
+\begin{DoxyParams}{Parameters}
+{\em seats} & vector of seat numbers to reserve in the hall \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_hall_a03426081562a6c96a7ec8455d5b619a1}\label{class_hall_a03426081562a6c96a7ec8455d5b619a1} 
+\index{Hall@{Hall}!totalEmptySeats@{totalEmptySeats}}
+\index{totalEmptySeats@{totalEmptySeats}!Hall@{Hall}}
+\doxysubsubsection{\texorpdfstring{totalEmptySeats()}{totalEmptySeats()}}
+{\footnotesize\ttfamily int Hall\+::total\+Empty\+Seats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+total\+Empty\+Seats method returns the total empty seats in the hall \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_hall_a5d7df5a390f4dadc26c2dcdf4aa58f37}\label{class_hall_a5d7df5a390f4dadc26c2dcdf4aa58f37} 
+\index{Hall@{Hall}!id@{id}}
+\index{id@{id}!Hall@{Hall}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily int Hall\+::id = 0}
+
+\Hypertarget{class_hall_a63221501c08071136b483408f32a65e3}\label{class_hall_a63221501c08071136b483408f32a65e3} 
+\index{Hall@{Hall}!movie\_id@{movie\_id}}
+\index{movie\_id@{movie\_id}!Hall@{Hall}}
+\doxysubsubsection{\texorpdfstring{movie\_id}{movie\_id}}
+{\footnotesize\ttfamily int Hall\+::movie\+\_\+id = 0}
+
+\Hypertarget{class_hall_ab5b2c96b43c8b0bef708d00bafef778c}\label{class_hall_ab5b2c96b43c8b0bef708d00bafef778c} 
+\index{Hall@{Hall}!name@{name}}
+\index{name@{name}!Hall@{Hall}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string Hall\+::name = "{}"{}}
+
+\Hypertarget{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}\label{class_hall_a513a3fa2eca7d11122f421f8c6f275a4} 
+\index{Hall@{Hall}!seats@{seats}}
+\index{seats@{seats}!Hall@{Hall}}
+\doxysubsubsection{\texorpdfstring{seats}{seats}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{Seat\+Status}} Hall\+::seats\mbox{[}\mbox{\hyperlink{_booking_library_8h_a42e07b056afb1e63dfebe25d510789e8}{MAX\+\_\+\+SEAT\+\_\+\+COUNT}}\mbox{]} = \{\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{Seat\+Status\+::\+Free}}\}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\mbox{\hyperlink{_booking_library_8h}{Booking\+Library.\+h}}\end{DoxyCompactItemize}

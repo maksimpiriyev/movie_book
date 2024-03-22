@@ -1,0 +1,98 @@
+\doxysection{Theatre Class Reference}
+\hypertarget{class_theatre}{}\label{class_theatre}\index{Theatre@{Theatre}}
+
+
+\doxylink{class_theatre}{Theatre} class, has id, name and halls.  
+
+
+
+
+{\ttfamily \#include $<$Booking\+Library.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_theatre_1_1glaze}{glaze}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_hall}{Hall}} $>$ \mbox{\hyperlink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall}} (int movie\+\_\+id)
+\item 
+bool \mbox{\hyperlink{class_theatre_acd6e57ecb1ec0729f19b109de1493c05}{has\+\_\+movie}} (int movie\+\_\+id)
+\item 
+\mbox{\hyperlink{struct_book_result}{Book\+Result}} \mbox{\hyperlink{class_theatre_a111ed75d8cf399e2fc92c13ef324fc5b}{book}} (int movie\+\_\+id, vector$<$ int $>$ seats)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_hall}{Hall}} $>$ $>$ \mbox{\hyperlink{class_theatre_aab2fe41aa5babc96f4944f191c3c3ce0}{halls}}
+\item 
+int \mbox{\hyperlink{class_theatre_a41339bde7702c333632558ad54397bc4}{id}}
+\item 
+string \mbox{\hyperlink{class_theatre_a86f9057eb5a3a6df5349df3f946ca7cd}{name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_theatre}{Theatre} class, has id, name and halls. 
+
+\begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_theatre_a111ed75d8cf399e2fc92c13ef324fc5b}\label{class_theatre_a111ed75d8cf399e2fc92c13ef324fc5b} 
+\index{Theatre@{Theatre}!book@{book}}
+\index{book@{book}!Theatre@{Theatre}}
+\doxysubsubsection{\texorpdfstring{book()}{book()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_book_result}{Book\+Result}} Theatre\+::book (\begin{DoxyParamCaption}\item[{int}]{movie\+\_\+id,  }\item[{vector$<$ int $>$}]{seats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\doxylink{class_theatre_a111ed75d8cf399e2fc92c13ef324fc5b}{book()} method books the seats in the hall with the given movie\+\_\+id and returns the hall\+\_\+id and is\+\_\+booked status in \doxylink{struct_book_result}{Book\+Result} struct. If the hall is not found, it returns -\/1 as hall\+\_\+id and false as is\+\_\+booked status. If the seats are not available, it returns the hall\+\_\+id and false as is\+\_\+booked status. If the seats are available, it reserves the seats and books them and returns the hall\+\_\+id and true as is\+\_\+booked status in \doxylink{struct_book_result}{Book\+Result} struct. \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}\label{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3} 
+\index{Theatre@{Theatre}!hall@{hall}}
+\index{hall@{hall}!Theatre@{Theatre}}
+\doxysubsubsection{\texorpdfstring{hall()}{hall()}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$ \mbox{\hyperlink{class_hall}{Hall}} $>$ Theatre\+::hall (\begin{DoxyParamCaption}\item[{int}]{movie\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\doxylink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall()} method returns the hall with the given movie\+\_\+id \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_theatre_acd6e57ecb1ec0729f19b109de1493c05}\label{class_theatre_acd6e57ecb1ec0729f19b109de1493c05} 
+\index{Theatre@{Theatre}!has\_movie@{has\_movie}}
+\index{has\_movie@{has\_movie}!Theatre@{Theatre}}
+\doxysubsubsection{\texorpdfstring{has\_movie()}{has\_movie()}}
+{\footnotesize\ttfamily bool Theatre\+::has\+\_\+movie (\begin{DoxyParamCaption}\item[{int}]{movie\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\doxylink{class_theatre_acd6e57ecb1ec0729f19b109de1493c05}{has\+\_\+movie()} method checks if the theatre has a movie with the given movie\+\_\+id \begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_theatre_aab2fe41aa5babc96f4944f191c3c3ce0}\label{class_theatre_aab2fe41aa5babc96f4944f191c3c3ce0} 
+\index{Theatre@{Theatre}!halls@{halls}}
+\index{halls@{halls}!Theatre@{Theatre}}
+\doxysubsubsection{\texorpdfstring{halls}{halls}}
+{\footnotesize\ttfamily vector$<$shared\+\_\+ptr$<$\mbox{\hyperlink{class_hall}{Hall}}$>$ $>$ Theatre\+::halls}
+
+\Hypertarget{class_theatre_a41339bde7702c333632558ad54397bc4}\label{class_theatre_a41339bde7702c333632558ad54397bc4} 
+\index{Theatre@{Theatre}!id@{id}}
+\index{id@{id}!Theatre@{Theatre}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily int Theatre\+::id}
+
+\Hypertarget{class_theatre_a86f9057eb5a3a6df5349df3f946ca7cd}\label{class_theatre_a86f9057eb5a3a6df5349df3f946ca7cd} 
+\index{Theatre@{Theatre}!name@{name}}
+\index{name@{name}!Theatre@{Theatre}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string Theatre\+::name}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\mbox{\hyperlink{_booking_library_8h}{Booking\+Library.\+h}}\end{DoxyCompactItemize}
