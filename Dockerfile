@@ -16,7 +16,6 @@ RUN conan profile detect --force; \
 
 # Build and publish a release  
 RUN cd build/; \
-#    cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release; \
     cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=./Release/generators/conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release; \
     cmake --build . --config Release;
 
