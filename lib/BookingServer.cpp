@@ -21,7 +21,7 @@ struct BookRequest {
     vector<int> seats;
 };
 
-void RunServer() {
+void RunServer(int port) {
     vector<shared_ptr<Movie>> movies;
     glz::read_file_json(movies, "movies.json", std::string{});
     vector<shared_ptr<Theatre>> theatres;
@@ -48,6 +48,16 @@ void RunServer() {
         res->writeStatus("200 OK");
         res->writeHeader("Content-Type", "application/json; charset=utf-8");
         res->write(glz::write_json(bookingEngine->get_theatres(stoi(string(req->getParameter("movie_id"))))));
+        res->end();
+    });
+
+    app.get("/list/theatre-seats/:theatre_id/:movie_id", [&](auto *res, auto *req) {
+        res->writeStatus("200 OK");
+        res->writeHeader("Content-Type", "application/json; charset=utf-8");
+        int theatre_id = stoi(string(req->getParameter("theatre_id")));
+        int movie_id = stoi(string(req->getParameter("movie_id")));
+        auto theatre_seats = bookingEngine->get_seats(movie_id, theatre_id);
+        res->write(glz::write_json(theatre_seats));
         res->end();
     });
 
@@ -92,9 +102,9 @@ void RunServer() {
         res->onAborted([]() {});
     });
 
-    app.listen(9001, [](auto *listenSocket) {
+    app.listen(port, [port](auto *listenSocket) {
         if (listenSocket) {
-            std::cout << "Listening on port " << 9001 << std::endl;
+            std::cout << "Listening on port " << port << std::endl;
         } else {
             std::cout << "Failed to load or to bind to port" << std::endl;
         }

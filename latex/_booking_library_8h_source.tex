@@ -1,0 +1,211 @@
+\doxysection{Booking\+Library.\+h}
+\hypertarget{_booking_library_8h_source}{}\label{_booking_library_8h_source}\index{lib/BookingLibrary.h@{lib/BookingLibrary.h}}
+\mbox{\hyperlink{_booking_library_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Maksim\ Piriyev\ on\ 18.03.24.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <semaphore>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <glaze/glaze.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ MAX\_SEAT\_COUNT\ 20}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{static}\ \textcolor{keyword}{struct\ }timespec\ now()\{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{struct\ }timespec\ spec\ =\ \{0\};}
+\DoxyCodeLine{00021\ \ \ \ \ clock\_gettime(CLOCK\_REALTIME,\ \&spec);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ spec;}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_movie}{Movie}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ =\ 0;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_movie_a988d328b2cc8e517b8147c612bfbdde1}{name}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_movie_a62d82e9e61d6349ae66a73d0af6667ac}{Movie}}()\{\}}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_movie_ae5ecdfc24ec1dcc82a7451826154801e}{Movie}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_movie_a988d328b2cc8e517b8147c612bfbdde1}{name}}):\mbox{\hyperlink{class_movie_a4265b536373191ad3dfe3057db52ae7a}{id}}(\mbox{\hyperlink{class_movie_a4265b536373191ad3dfe3057db52ae7a}{id}}),\ \mbox{\hyperlink{class_movie_a988d328b2cc8e517b8147c612bfbdde1}{name}}(\mbox{\hyperlink{class_movie_a988d328b2cc8e517b8147c612bfbdde1}{name}})\{\}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_movie_1_1glaze}{glaze}}\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_movie}{T}}\ =\ \mbox{\hyperlink{class_movie_a62d82e9e61d6349ae66a73d0af6667ac}{Movie}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{struct_movie_1_1glaze_a169b50582290783f681e104ae9755e56}{value}}\ =\ glz::object(}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_movie_a4265b536373191ad3dfe3057db52ae7a}{T::id}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_movie_a988d328b2cc8e517b8147c612bfbdde1}{T::name}}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_client}{Client}}\ \{}
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_client_a456e36f9972a8bf3ecdb5f0e70b3bd5d}{name}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_client_ae51af7aa6b8f591496a8f6a4a87a14bf}{Client}}()\{\}}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_client_a6c666ac3bbd59ec3ea58794d17385f3a}{Client}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_client_a456e36f9972a8bf3ecdb5f0e70b3bd5d}{name}}):\mbox{\hyperlink{class_client_ab79ad95264939f089a2f0b8e0ca62d37}{id}}(\mbox{\hyperlink{class_client_ab79ad95264939f089a2f0b8e0ca62d37}{id}}),\ \mbox{\hyperlink{class_client_a456e36f9972a8bf3ecdb5f0e70b3bd5d}{name}}(\mbox{\hyperlink{class_client_a456e36f9972a8bf3ecdb5f0e70b3bd5d}{name}})\{\}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_client_1_1glaze}{glaze}}\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_client}{T}}\ =\ \mbox{\hyperlink{class_client_ae51af7aa6b8f591496a8f6a4a87a14bf}{Client}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{struct_client_1_1glaze_a0edb7a21e89b511d6cda2c59875cf46f}{value}}\ =\ glz::object(}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_client_ab79ad95264939f089a2f0b8e0ca62d37}{T::id}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_client_a456e36f9972a8bf3ecdb5f0e70b3bd5d}{T::name}}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00058\ \ \ \ \ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_booking}{Booking}}\ \{}
+\DoxyCodeLine{00067\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_booking_a74def240be10e99ad985a15a219e198b}{client\_id}};}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_booking_ad4006287223bc0f2a848eb53306ccfb7}{theatre\_id}};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_booking_a25e8034888894a599e08ef4fc651ec72}{movie\_id}};}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_booking_a3222f06453024ff49d8c8e2e534323ee}{hall\_id}};}
+\DoxyCodeLine{00072\ \ \ \ \ vector<int>\ \mbox{\hyperlink{class_booking_a9a47325026e0c1db9a650ef19e4725e5}{seat\_ids}};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{struct\ }timespec\ \mbox{\hyperlink{class_booking_addc0a359e820875b19b2f313ed625287}{timestamp}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{class_booking_a1cb7dcef8ece03d2afddaf27224a014a}{Booking}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_booking_a74def240be10e99ad985a15a219e198b}{client\_id}},}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_booking_ad4006287223bc0f2a848eb53306ccfb7}{theatre\_id}},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_booking_a25e8034888894a599e08ef4fc651ec72}{movie\_id}},}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_booking_a3222f06453024ff49d8c8e2e534323ee}{hall\_id}},}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ vector<int>\ \mbox{\hyperlink{class_booking_a9a47325026e0c1db9a650ef19e4725e5}{seat\_ids}},}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ timespec\ \mbox{\hyperlink{class_booking_addc0a359e820875b19b2f313ed625287}{timestamp}})\ :\ \mbox{\hyperlink{class_booking_a74def240be10e99ad985a15a219e198b}{client\_id}}(\mbox{\hyperlink{class_booking_a74def240be10e99ad985a15a219e198b}{client\_id}}),\ \mbox{\hyperlink{class_booking_ad4006287223bc0f2a848eb53306ccfb7}{theatre\_id}}(\mbox{\hyperlink{class_booking_ad4006287223bc0f2a848eb53306ccfb7}{theatre\_id}}),\ \mbox{\hyperlink{class_booking_a25e8034888894a599e08ef4fc651ec72}{movie\_id}}(\mbox{\hyperlink{class_booking_a25e8034888894a599e08ef4fc651ec72}{movie\_id}}),\ \mbox{\hyperlink{class_booking_a3222f06453024ff49d8c8e2e534323ee}{hall\_id}}(\mbox{\hyperlink{class_booking_a3222f06453024ff49d8c8e2e534323ee}{hall\_id}}),}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_booking_a9a47325026e0c1db9a650ef19e4725e5}{seat\_ids}}(\mbox{\hyperlink{class_booking_a9a47325026e0c1db9a650ef19e4725e5}{seat\_ids}}),\ \mbox{\hyperlink{class_booking_addc0a359e820875b19b2f313ed625287}{timestamp}}(\mbox{\hyperlink{class_booking_addc0a359e820875b19b2f313ed625287}{timestamp}})\ \{\}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_booking_1_1glaze}{glaze}}\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_booking}{T}}\ =\ \mbox{\hyperlink{class_booking_a1cb7dcef8ece03d2afddaf27224a014a}{Booking}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{struct_booking_1_1glaze_a3911c733ab61a77a31f3fe459f8568df}{value}}\ =\ glz::object(}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_booking_a74def240be10e99ad985a15a219e198b}{T::client\_id}},}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_booking_ad4006287223bc0f2a848eb53306ccfb7}{T::theatre\_id}},}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_booking_a25e8034888894a599e08ef4fc651ec72}{T::movie\_id}},}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_booking_a3222f06453024ff49d8c8e2e534323ee}{T::hall\_id}},}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_booking_a9a47325026e0c1db9a650ef19e4725e5}{T::seat\_ids}},}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_booking_addc0a359e820875b19b2f313ed625287}{T::timestamp}}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00093\ \ \ \ \ \};}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}}\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{Free}}\ =\ 0,\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19a6136a0872216f91100b42ea04333af70}{Reserved}},\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19ae6d92097ce805861e84d6c2dd2daa1c8}{Booked}}}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00105\ \textcolor{keyword}{struct\ }glz::meta<\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}}>\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{using\ }enum\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}};}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ value\ =\ enumerate(\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{Free}},}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19a6136a0872216f91100b42ea04333af70}{Reserved}},}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19ae6d92097ce805861e84d6c2dd2daa1c8}{Booked}}}
+\DoxyCodeLine{00110\ \ \ \ \ );}
+\DoxyCodeLine{00111\ \};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_hall}{Hall}}\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ binary\_semaphore\ semaphore\ =\ binary\_semaphore(1);}
+\DoxyCodeLine{00119\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ =\ 0;}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_hall_ab5b2c96b43c8b0bef708d00bafef778c}{name}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hall_a63221501c08071136b483408f32a65e3}{movie\_id}}\ =\ 0;}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}}\ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}}[\mbox{\hyperlink{_booking_library_8h_a42e07b056afb1e63dfebe25d510789e8}{MAX\_SEAT\_COUNT}}]\ =\ \{\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{SeatStatus::Free}}\};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_hall_1_1glaze}{glaze}}\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_hall}{T}}\ =\ \mbox{\hyperlink{class_hall}{Hall}};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{struct_hall_1_1glaze_affdecf0eb5242cebb0b9da6b807ff3ed}{value}}\ =\ glz::object(}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_hall_a5d7df5a390f4dadc26c2dcdf4aa58f37}{T::id}},}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_hall_ab5b2c96b43c8b0bef708d00bafef778c}{T::name}},}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_hall_a63221501c08071136b483408f32a65e3}{T::movie\_id}}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00132\ \ \ \ \ \};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hall_a03426081562a6c96a7ec8455d5b619a1}{totalEmptySeats}}()\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ emptySeatCount\ =\ 0;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ semaphore.acquire();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ /\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}});\ ++i)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}}[i]\ ==\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{SeatStatus::Free}})\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ emptySeatCount++;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ semaphore.release();}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ emptySeatCount;}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00154\ \ \ \ \ vector<int>\ \mbox{\hyperlink{class_hall_a10f8d85eded042ed53bcb0f920c31276}{empty\_seats}}()\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ vector<int>\ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}};}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ semaphore.acquire();}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ /\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{SeatStatus}});\ ++i)\ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}}[i]\ ==\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{SeatStatus::Free}})\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}}.push\_back(i);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ semaphore.release();}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}};}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_hall_a119373fa3e6dd5ec978a93fdceab2b15}{reserve}}(vector<int>\ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ semaphore.acquire();}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ seat:\ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>seats[seat]\ !=\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{SeatStatus::Free}})\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ semaphore.release();}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ seat:\ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>seats[seat]\ =\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19a6136a0872216f91100b42ea04333af70}{SeatStatus::Reserved}};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ semaphore.release();}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00184\ \ \ \ \ \}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_hall_a4447e466a511614c577515fc8efebefe}{book}}(vector<int>\ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_hall_a119373fa3e6dd5ec978a93fdceab2b15}{reserve}}(\mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}}))\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ seat:\ \mbox{\hyperlink{class_hall_a513a3fa2eca7d11122f421f8c6f275a4}{seats}})\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>seats[seat]\ =\ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19ae6d92097ce805861e84d6c2dd2daa1c8}{SeatStatus::Booked}};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00199\ \ \ \ \ \}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_book_result}{BookResult}}\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_book_result_a8f3390ad1b4a0e2d5c7791c3c3dbb4a7}{hall\_id}};}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_book_result_a7023fad52737a535755494a28018f10c}{is\_booked}};}
+\DoxyCodeLine{00206\ \};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00212\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_theatre}{Theatre}}\ \{}
+\DoxyCodeLine{00213\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00214\ \ \ \ \ vector<shared\_ptr<Hall>>\ \mbox{\hyperlink{class_theatre_aab2fe41aa5babc96f4944f191c3c3ce0}{halls}};}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_theatre_a41339bde7702c333632558ad54397bc4}{id}};}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_theatre_a86f9057eb5a3a6df5349df3f946ca7cd}{name}};}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_theatre_1_1glaze}{glaze}}\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_theatre}{T}}\ =\ \mbox{\hyperlink{class_theatre}{Theatre}};}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{struct_theatre_1_1glaze_a4011646aa8489ea7cb9a90a479699e10}{value}}\ =\ glz::object(}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_theatre_a41339bde7702c333632558ad54397bc4}{T::id}},}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_theatre_a86f9057eb5a3a6df5349df3f946ca7cd}{T::name}},}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{class_theatre_aab2fe41aa5babc96f4944f191c3c3ce0}{T::halls}}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00225\ \ \ \ \ \};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00231\ \ \ \ \ shared\_ptr<Hall>\ \mbox{\hyperlink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall}}(\textcolor{keywordtype}{int}\ movie\_id)\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_theatre_aab2fe41aa5babc96f4944f191c3c3ce0}{halls}}.size();\ ++i)\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_theatre_aab2fe41aa5babc96f4944f191c3c3ce0}{halls}}[i]-\/>movie\_id\ ==\ movie\_id)}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_theatre_aab2fe41aa5babc96f4944f191c3c3ce0}{halls}}[i];}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00237\ \ \ \ \ \}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_theatre_acd6e57ecb1ec0729f19b109de1493c05}{has\_movie}}(\textcolor{keywordtype}{int}\ movie\_id)\ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall}}(movie\_id)\ !=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00245\ \ \ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00256\ \ \ \ \ \mbox{\hyperlink{struct_book_result}{BookResult}}\ \mbox{\hyperlink{class_theatre_a111ed75d8cf399e2fc92c13ef324fc5b}{book}}(\textcolor{keywordtype}{int}\ movie\_id,\ vector<int>\ seats)\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall}}\ =\ this-\/>\mbox{\hyperlink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall}}(movie\_id);}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall}})}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{-\/1,\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall}}-\/>book(seats);}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\mbox{\hyperlink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall}}-\/>id,\ result\};}
+\DoxyCodeLine{00262\ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \};}
+
+\end{DoxyCode}

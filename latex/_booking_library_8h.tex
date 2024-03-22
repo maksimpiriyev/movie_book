@@ -1,0 +1,86 @@
+\doxysection{lib/\+Booking\+Library.h File Reference}
+\hypertarget{_booking_library_8h}{}\label{_booking_library_8h}\index{lib/BookingLibrary.h@{lib/BookingLibrary.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$semaphore$>$}\newline
+{\ttfamily \#include $<$glaze/glaze.\+hpp$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_movie}{Movie}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_movie}{Movie} class, has id and name. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_movie_1_1glaze}{Movie\+::glaze}}
+\item 
+class \mbox{\hyperlink{class_client}{Client}}
+\item 
+struct \mbox{\hyperlink{struct_client_1_1glaze}{Client\+::glaze}}
+\item 
+class \mbox{\hyperlink{class_booking}{Booking}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_booking}{Booking} class, stores the booking information of a client, theatre, movie, hall, seats and timestamp of booking. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_booking_1_1glaze}{Booking\+::glaze}}
+\item 
+struct \mbox{\hyperlink{structglz_1_1meta_3_01_seat_status_01_4}{glz\+::meta$<$ Seat\+Status $>$}}
+\item 
+class \mbox{\hyperlink{class_hall}{Hall}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_hall}{Hall} class, has id, name, movie\+\_\+id and seats. It has reserve and book methods to reserve and book seats. It has total\+Empty\+Seats method to get the total empty seats in the hall. It has a semaphore to lock the hall while reserving or booking seats. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_hall_1_1glaze}{Hall\+::glaze}}
+\item 
+struct \mbox{\hyperlink{struct_book_result}{Book\+Result}}
+\item 
+class \mbox{\hyperlink{class_theatre}{Theatre}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_theatre}{Theatre} class, has id, name and halls. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_theatre_1_1glaze}{Theatre\+::glaze}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_booking_library_8h_a42e07b056afb1e63dfebe25d510789e8}{MAX\+\_\+\+SEAT\+\_\+\+COUNT}}~20
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{Seat\+Status}} \{ \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}{Free}} = 0
+, \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19a6136a0872216f91100b42ea04333af70}{Reserved}}
+, \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19ae6d92097ce805861e84d6c2dd2daa1c8}{Booked}}
+ \}
+\begin{DoxyCompactList}\small\item\em enum class for seat status, Free, Reserved, Booked \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_booking_library_8h_a42e07b056afb1e63dfebe25d510789e8}\label{_booking_library_8h_a42e07b056afb1e63dfebe25d510789e8} 
+\index{BookingLibrary.h@{BookingLibrary.h}!MAX\_SEAT\_COUNT@{MAX\_SEAT\_COUNT}}
+\index{MAX\_SEAT\_COUNT@{MAX\_SEAT\_COUNT}!BookingLibrary.h@{BookingLibrary.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_SEAT\_COUNT}{MAX\_SEAT\_COUNT}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+SEAT\+\_\+\+COUNT~20}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}\label{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19} 
+\index{BookingLibrary.h@{BookingLibrary.h}!SeatStatus@{SeatStatus}}
+\index{SeatStatus@{SeatStatus}!BookingLibrary.h@{BookingLibrary.h}}
+\doxysubsubsection{\texorpdfstring{SeatStatus}{SeatStatus}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19}{Seat\+Status}}}
+
+
+
+enum class for seat status, Free, Reserved, Booked 
+
+\begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Free@{Free}!BookingLibrary.h@{BookingLibrary.h}}\index{BookingLibrary.h@{BookingLibrary.h}!Free@{Free}}}\Hypertarget{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310}\label{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19af81827737c0ce4664c0f7d1242183310} 
+Free&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Reserved@{Reserved}!BookingLibrary.h@{BookingLibrary.h}}\index{BookingLibrary.h@{BookingLibrary.h}!Reserved@{Reserved}}}\Hypertarget{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19a6136a0872216f91100b42ea04333af70}\label{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19a6136a0872216f91100b42ea04333af70} 
+Reserved&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Booked@{Booked}!BookingLibrary.h@{BookingLibrary.h}}\index{BookingLibrary.h@{BookingLibrary.h}!Booked@{Booked}}}\Hypertarget{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19ae6d92097ce805861e84d6c2dd2daa1c8}\label{_booking_library_8h_ade6bb1ecbc1044a6f6b53edd38ac5e19ae6d92097ce805861e84d6c2dd2daa1c8} 
+Booked&\\
+\hline
+
+\end{DoxyEnumFields}
