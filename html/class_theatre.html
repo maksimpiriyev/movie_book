@@ -92,6 +92,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a69f56c1eaf9532e157c143aa3d6261a6" id="r_a69f56c1eaf9532e157c143aa3d6261a6"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69f56c1eaf9532e157c143aa3d6261a6">get_movie_ids</a> ()</td></tr>
+<tr class="separator:a69f56c1eaf9532e157c143aa3d6261a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ccf82fff3c9784c2ce19130b49dbba3" id="r_a3ccf82fff3c9784c2ce19130b49dbba3"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="class_hall.html">Hall</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ccf82fff3c9784c2ce19130b49dbba3">hall</a> (int movie_id)</td></tr>
 <tr class="separator:a3ccf82fff3c9784c2ce19130b49dbba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd6e57ecb1ec0729f19b109de1493c05" id="r_acd6e57ecb1ec0729f19b109de1493c05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd6e57ecb1ec0729f19b109de1493c05">has_movie</a> (int movie_id)</td></tr>
@@ -138,7 +140,41 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><a class="el" href="#a111ed75d8cf399e2fc92c13ef324fc5b">book()</a> method books the seats in the hall with the given movie_id and returns the hall_id and is_booked status in <a class="el" href="struct_book_result.html">BookResult</a> struct. If the hall is not found, it returns -1 as hall_id and false as is_booked status. If the seats are not available, it returns the hall_id and false as is_booked status. If the seats are available, it reserves the seats and books them and returns the hall_id and true as is_booked status in <a class="el" href="struct_book_result.html">BookResult</a> struct. </p><dl class="section author"><dt>Author</dt><dd>Maksim Piriyev </dd></dl>
+<p><a class="el" href="#a111ed75d8cf399e2fc92c13ef324fc5b">book()</a> method books the seats in the hall with the given movie_id and returns the hall_id and is_booked status in <a class="el" href="struct_book_result.html" title="BookResult struct to store the result of the book operation, has hall_id and is_booked fields.">BookResult</a> struct. If the hall is not found, it returns -1 as hall_id and false as is_booked status. If the seats are not available, it returns the hall_id and false as is_booked status. If the seats are available, it reserves the seats and books them and returns the hall_id and true as is_booked status in <a class="el" href="struct_book_result.html" title="BookResult struct to store the result of the book operation, has hall_id and is_booked fields.">BookResult</a> struct. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">movie_id</td><td>movie id to book the seats </td></tr>
+    <tr><td class="paramname">seats</td><td>vector of seat numbers to book in the hall </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_book_result.html" title="BookResult struct to store the result of the book operation, has hall_id and is_booked fields.">BookResult</a> struct with hall_id and is_booked status </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Maksim Piriyev </dd></dl>
+
+</div>
+</div>
+<a id="a69f56c1eaf9532e157c143aa3d6261a6" name="a69f56c1eaf9532e157c143aa3d6261a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69f56c1eaf9532e157c143aa3d6261a6">&#9670;&#160;</a></span>get_movie_ids()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; int &gt; Theatre::get_movie_ids </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p><a class="el" href="#a69f56c1eaf9532e157c143aa3d6261a6">get_movie_ids()</a> method returns the list of movie ids presented in the halls </p><dl class="section author"><dt>Author</dt><dd>Maksim Piriyev </dd></dl>
 
 </div>
 </div>

@@ -17,6 +17,8 @@ struct \mbox{\hyperlink{struct_theatre_1_1glaze}{glaze}}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+vector$<$ int $>$ \mbox{\hyperlink{class_theatre_a69f56c1eaf9532e157c143aa3d6261a6}{get\+\_\+movie\+\_\+ids}} ()
+\item 
 shared\+\_\+ptr$<$ \mbox{\hyperlink{class_hall}{Hall}} $>$ \mbox{\hyperlink{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}{hall}} (int movie\+\_\+id)
 \item 
 bool \mbox{\hyperlink{class_theatre_acd6e57ecb1ec0729f19b109de1493c05}{has\+\_\+movie}} (int movie\+\_\+id)
@@ -49,7 +51,26 @@ Maksim Piriyev
 \doxysubsubsection{\texorpdfstring{book()}{book()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_book_result}{Book\+Result}} Theatre\+::book (\begin{DoxyParamCaption}\item[{int}]{movie\+\_\+id,  }\item[{vector$<$ int $>$}]{seats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\doxylink{class_theatre_a111ed75d8cf399e2fc92c13ef324fc5b}{book()} method books the seats in the hall with the given movie\+\_\+id and returns the hall\+\_\+id and is\+\_\+booked status in \doxylink{struct_book_result}{Book\+Result} struct. If the hall is not found, it returns -\/1 as hall\+\_\+id and false as is\+\_\+booked status. If the seats are not available, it returns the hall\+\_\+id and false as is\+\_\+booked status. If the seats are available, it reserves the seats and books them and returns the hall\+\_\+id and true as is\+\_\+booked status in \doxylink{struct_book_result}{Book\+Result} struct. \begin{DoxyAuthor}{Author}
+\doxylink{class_theatre_a111ed75d8cf399e2fc92c13ef324fc5b}{book()} method books the seats in the hall with the given movie\+\_\+id and returns the hall\+\_\+id and is\+\_\+booked status in \doxylink{struct_book_result}{Book\+Result} struct. If the hall is not found, it returns -\/1 as hall\+\_\+id and false as is\+\_\+booked status. If the seats are not available, it returns the hall\+\_\+id and false as is\+\_\+booked status. If the seats are available, it reserves the seats and books them and returns the hall\+\_\+id and true as is\+\_\+booked status in \doxylink{struct_book_result}{Book\+Result} struct. 
+\begin{DoxyParams}{Parameters}
+{\em movie\+\_\+id} & movie id to book the seats \\
+\hline
+{\em seats} & vector of seat numbers to book in the hall \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_book_result}{Book\+Result} struct with hall\+\_\+id and is\+\_\+booked status 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Maksim Piriyev 
+\end{DoxyAuthor}
+\Hypertarget{class_theatre_a69f56c1eaf9532e157c143aa3d6261a6}\label{class_theatre_a69f56c1eaf9532e157c143aa3d6261a6} 
+\index{Theatre@{Theatre}!get\_movie\_ids@{get\_movie\_ids}}
+\index{get\_movie\_ids@{get\_movie\_ids}!Theatre@{Theatre}}
+\doxysubsubsection{\texorpdfstring{get\_movie\_ids()}{get\_movie\_ids()}}
+{\footnotesize\ttfamily vector$<$ int $>$ Theatre\+::get\+\_\+movie\+\_\+ids (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\doxylink{class_theatre_a69f56c1eaf9532e157c143aa3d6261a6}{get\+\_\+movie\+\_\+ids()} method returns the list of movie ids presented in the halls \begin{DoxyAuthor}{Author}
 Maksim Piriyev 
 \end{DoxyAuthor}
 \Hypertarget{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3}\label{class_theatre_a3ccf82fff3c9784c2ce19130b49dbba3} 

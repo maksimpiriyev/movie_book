@@ -138,7 +138,7 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>book method books the seats in the hall with the given seat numbers. It returns true if the seats are booked successfully, otherwise false. It uses a semaphore to lock the hall while booking the seats. It checks if the seats are reserved before booking them. If any of the seats are not reserved, it releases the semaphore and returns false. Otherwise, it books the seats and releases the semaphore. It returns true if all the seats are booked successfully, otherwise false. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>book(seats) method books the seats in the hall with the given seat numbers. It returns true if the seats are booked successfully, otherwise false.It reserves the seats before booking them. If any of the seats are not reservable, it returns false. Otherwise, it books the seats. It returns true if all the seats are booked successfully, otherwise false. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">seats</td><td>vector of seat numbers to book in the hall </td></tr>
   </table>
@@ -170,7 +170,7 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>empty_seats method returns the lsit of empty seats in the hall </p><dl class="section author"><dt>Author</dt><dd>Maksim Piriyev </dd></dl>
+<p><a class="el" href="#a10f8d85eded042ed53bcb0f920c31276">empty_seats()</a> method returns the list of empty seats in the hall </p><dl class="section author"><dt>Author</dt><dd>Maksim Piriyev </dd></dl>
 
 </div>
 </div>
@@ -196,7 +196,7 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>reserve method reserves the seats in the hall with the given seat numbers. It returns true if the seats are reserved successfully, otherwise false. It uses a semaphore to lock the hall while reserving the seats. It checks if the seats are free before reserving them. If any of the seats are not free, it releases the semaphore and returns false. Otherwise, it reserves the seats and releases the semaphore. It returns true if all the seats are reserved successfully, otherwise false. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>reserve(seats) method reserves the seats in the hall with the given seat numbers. It returns true if the seats are reserved successfully, otherwise false. It uses a semaphore to lock the hall while reserving the seats. It checks if the seats are free before reserving them. If any of the seats are not free, it releases the semaphore and returns false. Otherwise, it reserves the seats and releases the semaphore. It returns true if all the seats are reserved successfully, otherwise false. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">seats</td><td>vector of seat numbers to reserve in the hall </td></tr>
   </table>
@@ -228,7 +228,7 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>totalEmptySeats method returns the total empty seats in the hall </p><dl class="section author"><dt>Author</dt><dd>Maksim Piriyev </dd></dl>
+<p><a class="el" href="#a03426081562a6c96a7ec8455d5b619a1">totalEmptySeats()</a> method returns the total empty seats in the hall </p><dl class="section author"><dt>Author</dt><dd>Maksim Piriyev </dd></dl>
 
 </div>
 </div>

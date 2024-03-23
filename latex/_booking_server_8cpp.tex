@@ -18,7 +18,7 @@ struct \mbox{\hyperlink{struct_book_request}{Book\+Request}}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{_booking_server_8cpp_ace67894655a6679bff0669dc836ddd9b}{Run\+Server}} (int port)
-\begin{DoxyCompactList}\small\item\em Runs an http server at the specified port.\+Default port is 9001. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Run\+Server(post) function Runs an http server at the specified port.\+Default port is 8080. It creates a new \doxylink{class_booking_engine}{Booking\+Engine} object and listens to the given port. It has several endpoints to get movies, theatres, theatre seats, bookings and to book a seat. \textquotesingle{}/list/movies\textquotesingle{} endpoint returns the list of movies. \textquotesingle{}/list/theatres\textquotesingle{} endpoint returns the list of theatres. \textquotesingle{}/list/theatres/\+:movie\+\_\+id\textquotesingle{} endpoint returns the list of theatres for the given movie. \textquotesingle{}/list/theatre-\/seats/\+:theatre\+\_\+id/\+:movie\+\_\+id\textquotesingle{} endpoint returns the list of seats for the given theatre and movie. \textquotesingle{}/list/bookings/\+:client\+\_\+id\textquotesingle{} endpoint returns the list of bookings for the given client. \textquotesingle{}/list/bookings\textquotesingle{} endpoint returns the list of all bookings. \textquotesingle{}/book\textquotesingle{} endpoint is used to book seats. It returns the booking result. If the booking is successful, it returns the booking details. If the booking is unsuccessful, it returns the result as false. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -30,7 +30,7 @@ void \mbox{\hyperlink{_booking_server_8cpp_ace67894655a6679bff0669dc836ddd9b}{Ru
 
 
 
-Runs an http server at the specified port.\+Default port is 9001. 
+Run\+Server(post) function Runs an http server at the specified port.\+Default port is 8080. It creates a new \doxylink{class_booking_engine}{Booking\+Engine} object and listens to the given port. It has several endpoints to get movies, theatres, theatre seats, bookings and to book a seat. \textquotesingle{}/list/movies\textquotesingle{} endpoint returns the list of movies. \textquotesingle{}/list/theatres\textquotesingle{} endpoint returns the list of theatres. \textquotesingle{}/list/theatres/\+:movie\+\_\+id\textquotesingle{} endpoint returns the list of theatres for the given movie. \textquotesingle{}/list/theatre-\/seats/\+:theatre\+\_\+id/\+:movie\+\_\+id\textquotesingle{} endpoint returns the list of seats for the given theatre and movie. \textquotesingle{}/list/bookings/\+:client\+\_\+id\textquotesingle{} endpoint returns the list of bookings for the given client. \textquotesingle{}/list/bookings\textquotesingle{} endpoint returns the list of all bookings. \textquotesingle{}/book\textquotesingle{} endpoint is used to book seats. It returns the booking result. If the booking is successful, it returns the booking details. If the booking is unsuccessful, it returns the result as false. 
 
 \begin{DoxyAuthor}{Author}
 Maksim Piriyev 

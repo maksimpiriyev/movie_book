@@ -15,6 +15,10 @@
 
 using namespace std;
 
+/**
+* BookRequest struct for request body
+* @author Maksim Piriyev
+*/
 struct BookRequest {
     int theatre_id;
     int movie_id;

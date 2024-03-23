@@ -16,7 +16,7 @@ using namespace std;
 /**
 *   Current time as unix timespec
 */
-static struct timespec now(){
+static struct timespec now() {
     struct timespec spec = {0};
     clock_gettime(CLOCK_REALTIME, &spec);
     return spec;
@@ -32,8 +32,10 @@ public:
     int id = 0;
     string name = "";
 
-    Movie(){}
-    Movie(int id, string name):id(id), name(name){}
+    Movie() {}
+
+    Movie(int id, string name) : id(id), name(name) {}
+
     struct glaze {
         using T = Movie;
         static constexpr auto value = glz::object(
@@ -43,13 +45,19 @@ public:
     };
 };
 
+/**
+* @brief Client class, has id and name
+* @author Maksim Piriyev
+*/
 class Client {
 public:
     int id = 0;
     string name = "";
 
-    Client(){}
-    Client(int id, string name):id(id), name(name){}
+    Client() {}
+
+    Client(int id, string name) : id(id), name(name) {}
+
     struct glaze {
         using T = Client;
         static constexpr auto value = glz::object(
@@ -78,8 +86,9 @@ public:
             int movie_id,
             int hall_id,
             vector<int> seat_ids,
-            struct timespec timestamp) : client_id(client_id), theatre_id(theatre_id), movie_id(movie_id), hall_id(hall_id),
-                                  seat_ids(seat_ids), timestamp(timestamp) {}
+            struct timespec timestamp) : client_id(client_id), theatre_id(theatre_id), movie_id(movie_id),
+                                         hall_id(hall_id),
+                                         seat_ids(seat_ids), timestamp(timestamp) {}
 
     struct glaze {
         using T = Booking;
@@ -102,9 +111,14 @@ enum SeatStatus {
     Free = 0, Reserved, Booked
 };
 
-template <>
+/**
+* meta struct for serialization/deserialization operations
+* @author Maksim Piriyev
+*/
+template<>
 struct glz::meta<SeatStatus> {
-    using enum SeatStatus;
+    using
+    enum SeatStatus;
     static constexpr auto value = enumerate(Free,
                                             Reserved,
                                             Booked
@@ -134,7 +148,7 @@ public:
     };
 
     /**
-    * totalEmptySeats method returns the total empty seats in the hall
+    * totalEmptySeats() method returns the total empty seats in the hall
     * @author Maksim Piriyev
     */
     int totalEmptySeats() {
@@ -150,7 +164,7 @@ public:
     }
 
     /**
-    * empty_seats method returns the lsit of empty seats in the hall
+    * empty_seats() method returns the list of empty seats in the hall
     * @author Maksim Piriyev
     */
     vector<int> empty_seats() {
@@ -166,7 +180,7 @@ public:
     }
 
     /**
-    * reserve method reserves the seats in the hall with the given seat numbers. It returns true if the seats are reserved successfully, otherwise false. It uses a semaphore to lock the hall while reserving the seats. It checks if the seats are free before reserving them. If any of the seats are not free, it releases the semaphore and returns false. Otherwise, it reserves the seats and releases the semaphore. It returns true if all the seats are reserved successfully, otherwise false.
+    * reserve(seats) method reserves the seats in the hall with the given seat numbers. It returns true if the seats are reserved successfully, otherwise false. It uses a semaphore to lock the hall while reserving the seats. It checks if the seats are free before reserving them. If any of the seats are not free, it releases the semaphore and returns false. Otherwise, it reserves the seats and releases the semaphore. It returns true if all the seats are reserved successfully, otherwise false.
     * @param seats vector of seat numbers to reserve in the hall
     * @author Maksim Piriyev
     */
@@ -186,7 +200,7 @@ public:
     }
 
     /**
-    * book method books the seats in the hall with the given seat numbers. It returns true if the seats are booked successfully, otherwise false. It uses a semaphore to lock the hall while booking the seats. It checks if the seats are reserved before booking them. If any of the seats are not reserved, it releases the semaphore and returns false. Otherwise, it books the seats and releases the semaphore. It returns true if all the seats are booked successfully, otherwise false.
+    * book(seats) method books the seats in the hall with the given seat numbers. It returns true if the seats are booked successfully, otherwise false.It reserves the seats before booking them. If any of the seats are not reservable, it returns false. Otherwise, it books the seats. It returns true if all the seats are booked successfully, otherwise false.
     * @param seats vector of seat numbers to book in the hall
     * @author Maksim Piriyev
     */
@@ -202,6 +216,11 @@ public:
 
 };
 
+/**
+* @brief BookResult struct to store the result of the book operation,
+* has hall_id and is_booked fields.
+* @author Maksim Piriyev
+*/
 struct BookResult {
     int hall_id;
     bool is_booked;
@@ -225,6 +244,18 @@ public:
                 &T::halls
         );
     };
+
+    /**
+    * get_movie_ids() method returns the list of movie ids presented in the halls
+    * @author Maksim Piriyev
+    */
+    vector<int> get_movie_ids() {
+        vector<int> movie_ids;
+        for (auto hall: halls) {
+            movie_ids.push_back(hall->movie_id);
+        }
+        return movie_ids;
+    }
 
     /**
     * hall() method returns the hall with the given movie_id
@@ -253,13 +284,16 @@ public:
     * If the seats  are not available, it returns the hall_id and false as is_booked status.
     * If the seats are available, it reserves the seats and books them and returns the hall_id
     * and true as is_booked status in BookResult struct.
+    * @param movie_id movie id to book the seats
+    * @param seats vector of seat numbers to book in the hall
+    * @return BookResult struct with hall_id and is_booked status
     * @author Maksim Piriyev
     */
     BookResult book(int movie_id, vector<int> seats) {
         auto hall = this->hall(movie_id);
-        if(!hall)
+        if (!hall)
             return {-1, false};
-      
+
         auto result = hall->book(seats);
         return {hall->id, result};
     }
