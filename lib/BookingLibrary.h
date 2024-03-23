@@ -33,7 +33,6 @@ public:
     string name = "";
 
     Movie() {}
-
     Movie(int id, string name) : id(id), name(name) {}
 
     struct glaze {

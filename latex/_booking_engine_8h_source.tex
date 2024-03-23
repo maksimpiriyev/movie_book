@@ -18,97 +18,97 @@
 \DoxyCodeLine{00014\ }
 \DoxyCodeLine{00015\ \textcolor{keyword}{using\ namespace\ }std;}
 \DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_theatre_seats}{TheatreSeats}}\ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_theatre_seats_a00c3cadc9bafb109ea41102ca600b1c9}{movie\_id}};}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_theatre_seats_aa688ca2632fd88b7f5a9a836d4a55a37}{theatre\_id}};}
-\DoxyCodeLine{00020\ \ \ \ \ vector<int>\ \mbox{\hyperlink{struct_theatre_seats_ace7052231d228612d16c2832db4e2dad}{empty\_seats}};}
-\DoxyCodeLine{00021\ \};}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_booking_engine}{BookingEngine}}\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ vector<shared\_ptr<Booking>>\ bookings;}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ map<int,\ shared\_ptr<Movie>>\ mapMovies;}
-\DoxyCodeLine{00027\ \ \ \ \ map<int,\ shared\_ptr<Theatre>>\ mapTheatres;}
-\DoxyCodeLine{00028\ \ \ \ \ map<int,\ shared\_ptr<Client>>\ mapClients;}
-\DoxyCodeLine{00029\ \ \ \ \ map<int,\ vector<shared\_ptr<Theatre>>>\ mapMovieTheatres;}
-\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00037\ \ \ \ \ shared\_ptr<Client>\ \mbox{\hyperlink{class_booking_engine_a95614d35033782dacb7cddedd220c5fa}{new\_client}}()\ \{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \textcolor{keywordtype}{id}\ =\ mapClients.size()\ +\ 1;}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ stringstream\ stream;}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ stream\ <<\ \textcolor{stringliteral}{"{}Random\ Client\ "{}}\ <<\ id;}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ mapClients[id]\ =\ make\_shared<Client>(\textcolor{keywordtype}{id},\ stream.str());}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mapClients[id];}
-\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_theatre_seats}{TheatreSeats}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_theatre_seats_a00c3cadc9bafb109ea41102ca600b1c9}{movie\_id}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_theatre_seats_aa688ca2632fd88b7f5a9a836d4a55a37}{theatre\_id}};}
+\DoxyCodeLine{00024\ \ \ \ \ vector<int>\ \mbox{\hyperlink{struct_theatre_seats_ace7052231d228612d16c2832db4e2dad}{empty\_seats}};}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_booking_engine}{BookingEngine}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ vector<shared\_ptr<Booking>>\ bookings;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ map<int,\ shared\_ptr<Movie>>\ mapMovies;}
+\DoxyCodeLine{00035\ \ \ \ \ map<int,\ shared\_ptr<Theatre>>\ mapTheatres;}
+\DoxyCodeLine{00036\ \ \ \ \ map<int,\ shared\_ptr<Client>>\ mapClients;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ map<int,\ vector<shared\_ptr<Theatre>>>\ mapMovieTheatres;}
+\DoxyCodeLine{00043\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00044\ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Movie>>\ \mbox{\hyperlink{class_booking_engine_ab825826977f8daf67a6f78795d134418}{get\_movies}}()\ \{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ vector<shared\_ptr<Movie>>\ list;}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [\_,\ movie]:\ mapMovies)\ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ list.push\_back(movie);}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list;}
+\DoxyCodeLine{00049\ \ \ \ \ shared\_ptr<Client>\ \mbox{\hyperlink{class_booking_engine_a95614d35033782dacb7cddedd220c5fa}{new\_client}}()\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \textcolor{keywordtype}{id}\ =\ mapClients.size()\ +\ 1;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ stringstream\ stream;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ stream\ <<\ \textcolor{stringliteral}{"{}Random\ Client\ "{}}\ <<\ id;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ mapClients[id]\ =\ make\_shared<Client>(\textcolor{keywordtype}{id},\ stream.str());}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mapClients[id];}
 \DoxyCodeLine{00055\ \ \ \ \ \}}
 \DoxyCodeLine{00056\ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Theatre>>\ \mbox{\hyperlink{class_booking_engine_ab8f6ddcca5c8a0edd133978cc246d32a}{get\_theatres}}()\ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ vector<shared\_ptr<Theatre>>\ list;}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [\_,\ theatre]:\ mapTheatres)\ \{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ list.push\_back(theatre);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Movie>>\ \mbox{\hyperlink{class_booking_engine_ab825826977f8daf67a6f78795d134418}{get\_movies}}()\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ vector<shared\_ptr<Movie>>\ list;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [\_,\ movie]:\ mapMovies)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ list.push\_back(movie);}
 \DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list;}
 \DoxyCodeLine{00067\ \ \ \ \ \}}
 \DoxyCodeLine{00068\ }
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ shared\_ptr<Theatre>\ \mbox{\hyperlink{class_booking_engine_aa4c82e29d13d7663ee31303cdd24f17d}{get\_theatre}}(\textcolor{keywordtype}{int}\ theatre\_id)\ \{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mapTheatres[theatre\_id];}
-\DoxyCodeLine{00075\ \ \ \ \ \}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Theatre>>\ \mbox{\hyperlink{class_booking_engine_a374ff39aee888004902006622375fe19}{get\_theatres}}(\textcolor{keywordtype}{int}\ movie\_id)\ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>mapMovieTheatres[movie\_id];}
-\DoxyCodeLine{00084\ \ \ \ \ \}}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_theatre_seats}{TheatreSeats}}\ \mbox{\hyperlink{class_booking_engine_a7df9a835d6364a39ddc1858d706d937c}{get\_seats}}(\textcolor{keywordtype}{int}\ movie\_id,\ \textcolor{keywordtype}{int}\ theatre\_id)\ \{}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ hall\ =\ mapTheatres[theatre\_id]-\/>hall(movie\_id);}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hall)\ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{movie\_id,\ theatre\_id,\ hall-\/>\mbox{\hyperlink{struct_theatre_seats_ace7052231d228612d16c2832db4e2dad}{empty\_seats}}()\};}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{movie\_id,\ theatre\_id,\ \{\}\};}
-\DoxyCodeLine{00097\ \ \ \ \ \}}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Booking>>\ \mbox{\hyperlink{class_booking_engine_ace7b47b033f3f04c5aa04c740ca3d1fd}{get\_bookings}}()\ \{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vector<shared\_ptr<Booking>>(bookings);}
-\DoxyCodeLine{00106\ \ \ \ \ \}}
-\DoxyCodeLine{00107\ }
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Booking>>\ \mbox{\hyperlink{class_booking_engine_a33730d1c5f54d4fc257f43e73bc8aed7}{get\_bookings}}(\textcolor{keywordtype}{int}\ client\_id)\ \{}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ vector<shared\_ptr<Booking>>\ list;}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ booking:\ bookings)\ \{}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (booking-\/>client\_id\ ==\ client\_id)}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.push\_back(booking);}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list;}
-\DoxyCodeLine{00120\ \ \ \ \ \}}
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{class_booking_engine_ab6f4f2967ae08f34344fbc6c040168ad}{BookingEngine}}(vector<shared\_ptr<Movie>>\ movies,\ vector<shared\_ptr<Theatre>>\ theatres)\ \{}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ theatre:\ theatres)\ \{}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>mapTheatres[theatre-\/>id]\ =\ theatre;}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ movie\_id:\ theatre-\/>get\_movie\_ids())\ \{}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>mapMovieTheatres[movie\_id].push\_back(theatre);}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ movie:\ movies)\ \{}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>mapMovies[movie-\/>id]\ =\ movie;}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00137\ \ \ \ \ \}}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00146\ \ \ \ \ shared\_ptr<Booking>\ \mbox{\hyperlink{class_booking_engine_a5fc222c36bc32fae20713f3c6ac7c75f}{book}}(\textcolor{keywordtype}{int}\ client\_id,\ \textcolor{keywordtype}{int}\ theatre\_id,\ \textcolor{keywordtype}{int}\ movie\_id,\ vector<int>\ seat\_ids)\ \{}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ theatre\ =\ mapTheatres[theatre\_id];}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ book\_result\ =\ theatre-\/>book(movie\_id,\ seat\_ids);}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (book\_result.is\_booked)\ \{}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ booking\ =\ make\_shared<Booking>(client\_id,\ theatre\_id,\ movie\_id,\ book\_result.hall\_id,\ seat\_ids,\ now());}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ bookings.push\_back(booking);}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ booking;}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00155\ \ \ \ \ \}}
-\DoxyCodeLine{00156\ \};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Theatre>>\ \mbox{\hyperlink{class_booking_engine_ab8f6ddcca5c8a0edd133978cc246d32a}{get\_theatres}}()\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ vector<shared\_ptr<Theatre>>\ list;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [\_,\ theatre]:\ mapTheatres)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ list.push\_back(theatre);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list;}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{const}\ shared\_ptr<Theatre>\ \mbox{\hyperlink{class_booking_engine_aa4c82e29d13d7663ee31303cdd24f17d}{get\_theatre}}(\textcolor{keywordtype}{int}\ theatre\_id)\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mapTheatres[theatre\_id];}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Theatre>>\ \mbox{\hyperlink{class_booking_engine_a374ff39aee888004902006622375fe19}{get\_theatres}}(\textcolor{keywordtype}{int}\ movie\_id)\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>mapMovieTheatres[movie\_id];}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_theatre_seats}{TheatreSeats}}\ \mbox{\hyperlink{class_booking_engine_a7df9a835d6364a39ddc1858d706d937c}{get\_seats}}(\textcolor{keywordtype}{int}\ movie\_id,\ \textcolor{keywordtype}{int}\ theatre\_id)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ hall\ =\ mapTheatres[theatre\_id]-\/>hall(movie\_id);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hall)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{movie\_id,\ theatre\_id,\ hall-\/>\mbox{\hyperlink{struct_theatre_seats_ace7052231d228612d16c2832db4e2dad}{empty\_seats}}()\};}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{movie\_id,\ theatre\_id,\ \{\}\};}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Booking>>\ \mbox{\hyperlink{class_booking_engine_ace7b47b033f3f04c5aa04c740ca3d1fd}{get\_bookings}}()\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vector<shared\_ptr<Booking>>(bookings);}
+\DoxyCodeLine{00118\ \ \ \ \ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{const}\ vector<shared\_ptr<Booking>>\ \mbox{\hyperlink{class_booking_engine_a33730d1c5f54d4fc257f43e73bc8aed7}{get\_bookings}}(\textcolor{keywordtype}{int}\ client\_id)\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ vector<shared\_ptr<Booking>>\ list;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ booking:\ bookings)\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (booking-\/>client\_id\ ==\ client\_id)}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list.push\_back(booking);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list;}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{class_booking_engine_ab6f4f2967ae08f34344fbc6c040168ad}{BookingEngine}}(vector<shared\_ptr<Movie>>\ movies,\ vector<shared\_ptr<Theatre>>\ theatres)\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ theatre:\ theatres)\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>mapTheatres[theatre-\/>id]\ =\ theatre;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ movie\_id:\ theatre-\/>get\_movie\_ids())\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>mapMovieTheatres[movie\_id].push\_back(theatre);}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ movie:\ movies)\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>mapMovies[movie-\/>id]\ =\ movie;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00158\ \ \ \ \ shared\_ptr<Booking>\ \mbox{\hyperlink{class_booking_engine_a5fc222c36bc32fae20713f3c6ac7c75f}{book}}(\textcolor{keywordtype}{int}\ client\_id,\ \textcolor{keywordtype}{int}\ theatre\_id,\ \textcolor{keywordtype}{int}\ movie\_id,\ vector<int>\ seat\_ids)\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ theatre\ =\ mapTheatres[theatre\_id];}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ book\_result\ =\ theatre-\/>book(movie\_id,\ seat\_ids);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (book\_result.is\_booked)\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ booking\ =\ make\_shared<Booking>(client\_id,\ theatre\_id,\ movie\_id,\ book\_result.hall\_id,\ seat\_ids,\ now());}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ bookings.push\_back(booking);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ booking;}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00167\ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \};}
 
 \end{DoxyCode}

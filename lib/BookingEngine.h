@@ -14,21 +14,33 @@
 
 using namespace std;
 
+/**
+* TheatreSeats struct represents the list of empty seats in the theatre for the movie
+* @author Maksim Piriyev
+*/
 struct TheatreSeats {
     int movie_id;
     int theatre_id;
     vector<int> empty_seats;
 };
 
+/**
+* BookingEngine class represents the booking engine of the system.
+* @author Maksim Piriyev
+*/
 class BookingEngine {
     vector<shared_ptr<Booking>> bookings;
 
     map<int, shared_ptr<Movie>> mapMovies;
     map<int, shared_ptr<Theatre>> mapTheatres;
     map<int, shared_ptr<Client>> mapClients;
+
+    /**
+    * mapMovieTheatres map represents the list of theatres for each movie in the system.
+    * It enables to get the list of theatres for the movie very quickly by using tree map data structure.
+    */
     map<int, vector<shared_ptr<Theatre>>> mapMovieTheatres;
 public:
-
 
     /**
     * new_client method creates a new client with a random name and returns it
